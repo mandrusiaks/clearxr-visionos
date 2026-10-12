@@ -2,9 +2,7 @@
 See the LICENSE.txt file for this sample's licensing information.
 
 Abstract:
-The controller packets' wire format, specified in clearxr-server's
-clearxr-layer/protocol/PROTOCOL.md. It depends only on Foundation and simd, so that directory's
-check_swift.sh can compile it on a Mac and test it against the golden vectors.
+The controller packets' wire format, specified in clearxr-server's clearxr-layer/PROTOCOL.md.
 */
 
 import Foundation
