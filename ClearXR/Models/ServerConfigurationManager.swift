@@ -38,16 +38,16 @@ final class ServerConfigurationManager {
     /// Magic number prefix for configuration packets: "CF" in ASCII.
     static let magic: UInt16 = 0x4346
 
+    /// The channel Clear XR's PC layer opens. Other channels, such as the controller bridge's,
+    /// carry other protocols.
+    static let channelID = FoveatedStreamingSession.MessageChannel.ID(UUID(uuidString: "78563412-3412-3412-1234-56789ABCDEF0")!)
+
     func sendConfiguration(_ payload: StreamConfigurationMessage, via channelModel: MessageChannelModel) throws {
-        // Find a ready channel, refreshing if needed.
-        var channel = channelModel.availableChannels.values.first(where: {
-            $0.channelStatus == .ready
-        })
+        // Find the ready channel, refreshing if needed.
+        var channel = channelModel.availableChannels[Self.channelID].flatMap { $0.channelStatus == .ready ? $0 : nil }
         if channel == nil {
             channelModel.refreshChannels()
-            channel = channelModel.availableChannels.values.first(where: {
-                $0.channelStatus == .ready
-            })
+            channel = channelModel.availableChannels[Self.channelID].flatMap { $0.channelStatus == .ready ? $0 : nil }
         }
 
         guard let channel else {
