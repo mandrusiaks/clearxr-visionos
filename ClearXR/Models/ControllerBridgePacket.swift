@@ -2,17 +2,17 @@
 See the LICENSE.txt file for this sample's licensing information.
 
 Abstract:
-The controller bridge's wire format, specified in the bridge's PROTOCOL.md. It depends only on
-Foundation and simd, so the bridge's check_swift.sh can compile it on a Mac and test it against
-the golden vectors.
+The controller packets' wire format, specified in clearxr-server's
+clearxr-layer/protocol/PROTOCOL.md. It depends only on Foundation and simd, so that directory's
+check_swift.sh can compile it on a Mac and test it against the golden vectors.
 */
 
 import Foundation
 import simd
 
 enum ControllerBridgeProtocol {
-    /// The opaque data channel the PC layer opens for this protocol.
-    static let channelUUID = UUID(uuidString: "97749216-F137-476A-B758-DB510BF59F09")!
+    /// Clear XR's opaque data channel, which also carries the stream configuration packets.
+    static let channelUUID = UUID(uuidString: "78563412-3412-3412-1234-56789ABCDEF0")!
 }
 
 struct ControllerBridgePose: Equatable {

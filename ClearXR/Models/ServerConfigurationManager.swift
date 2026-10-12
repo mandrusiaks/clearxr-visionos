@@ -38,9 +38,9 @@ final class ServerConfigurationManager {
     /// Magic number prefix for configuration packets: "CF" in ASCII.
     static let magic: UInt16 = 0x4346
 
-    /// The channel Clear XR's PC layer opens. Other channels, such as the controller bridge's,
-    /// carry other protocols.
-    static let channelID = FoveatedStreamingSession.MessageChannel.ID(UUID(uuidString: "78563412-3412-3412-1234-56789ABCDEF0")!)
+    /// Clear XR's channel, which also carries the controller packets; the PC layer tells them
+    /// apart by their magic number.
+    static let channelID = FoveatedStreamingSession.MessageChannel.ID(ControllerBridgeProtocol.channelUUID)
 
     func sendConfiguration(_ payload: StreamConfigurationMessage, via channelModel: MessageChannelModel) throws {
         // Find the ready channel, refreshing if needed.

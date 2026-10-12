@@ -3,9 +3,9 @@ See the LICENSE.txt file for this sample's licensing information.
 
 Abstract:
 Sends the PSVR2 Sense controllers to the PC every frame of a stream: buttons from GameController,
-head-relative poses from ARKit accessory tracking. The PC's controller bridge OpenXR layer presents
-them to the game as Oculus Touch controllers and sends haptics back on the same channel.
-PROTOCOL.md in the controller bridge specifies the packets and pose conventions.
+head-relative poses from ARKit accessory tracking. Clear XR's OpenXR layer on the PC presents them
+to the game as Oculus Touch controllers and sends haptics back on the same channel.
+clearxr-server's clearxr-layer/protocol/PROTOCOL.md specifies the packets and pose conventions.
 */
 
 import Observation
